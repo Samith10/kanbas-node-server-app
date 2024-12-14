@@ -4,21 +4,26 @@ export default function PathParameters(app) {
     const sum = parseInt(a) + parseInt(b);
     res.send(sum.toString());
   });
+
   app.get("/lab5/subtract/:a/:b", (req, res) => {
     const { a, b } = req.params;
-    const sub = parseInt(a) - parseInt(b);
-    res.send(sub.toString());
+    const difference = parseInt(a) - parseInt(b);
+    res.send(difference.toString());
   });
 
   app.get("/lab5/multiply/:a/:b", (req, res) => {
     const { a, b } = req.params;
-    const mul = parseInt(a) * parseInt(b);
-    res.send(mul.toString());
+    const product = parseInt(a) * parseInt(b);
+    res.send(product.toString());
   });
 
   app.get("/lab5/divide/:a/:b", (req, res) => {
     const { a, b } = req.params;
-    const div = parseInt(a) / parseInt(b);
-    res.send(div.toString());
+    if (parseInt(b) === 0) {
+      res.send("Cannot divide by zero");
+    } else {
+      const quotient = parseInt(a) / parseInt(b);
+      res.send(quotient.toString());
+    }
   });
 }
